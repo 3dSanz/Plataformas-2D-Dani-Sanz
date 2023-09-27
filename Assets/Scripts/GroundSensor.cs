@@ -5,12 +5,19 @@ using UnityEngine;
 public class GroundSensor : MonoBehaviour
 {
     public bool isGrounded;
+    private Animator _anim;
+
+    void Start()
+    {
+        _anim = GameObject.Find("rogue").GetComponent<Animator>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.layer == 3)
         {
-           isGrounded = true; 
+           isGrounded = true;
+           _anim.SetBool("IsJumping", false);
         }
     
     }
@@ -20,6 +27,7 @@ public class GroundSensor : MonoBehaviour
         if(other.gameObject.layer == 3)
         {
            isGrounded = true; 
+           _anim.SetBool("IsJumping", false);
         }
     }
 
@@ -28,6 +36,7 @@ public class GroundSensor : MonoBehaviour
         if(other.gameObject.layer == 3)
         {
            isGrounded = false; 
+           _anim.SetBool("IsJumping", true);
         }
     }
 }
