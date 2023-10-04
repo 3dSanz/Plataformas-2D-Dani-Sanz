@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField]private float _jumpForce = 5.5f;
     private float _playerInput;
     private float _jumpInput;
-    private GroundSensor _gs;
+    //private GroundSensor _gs;
     private Animator _anim;
 
     //private float _playerInputUpDown;  
@@ -20,11 +20,8 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         //_gs = GameObject.Find("GroundSensor").GetComponent<GroundSensor>();
-        _gs = GetComponentInChildren<GroundSensor>();
+        //_gs = GetComponentInChildren<GroundSensor>();
         _anim = GetComponentInChildren<Animator>();
-
-        
-
     }
 
     // Update is called once per frame
@@ -62,10 +59,17 @@ public class Player : MonoBehaviour
     }
 
     void PlayerJump(){
-       if(Input.GetButtonDown("Jump") && _gs.isGrounded)
+       if(Input.GetButtonDown("Jump") && GroundSensor.isGrounded)
        {
         _rb.AddForce(Vector2.up *_jumpForce, ForceMode2D.Impulse);
+        }
 
-    }
+        if (GroundSensor.isGrounded)
+        {
+            _anim.SetBool("IsJumping", false);
+        } else
+        {
+            _anim.SetBool("IsJumping", true);
+        }
     }
 }

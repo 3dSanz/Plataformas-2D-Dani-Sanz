@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundSensor : MonoBehaviour
 {
-    public bool isGrounded;
+    public static bool isGrounded;
     private Animator _anim;
 
     void Start()
@@ -17,7 +17,7 @@ public class GroundSensor : MonoBehaviour
         if(other.gameObject.layer == 3)
         {
            isGrounded = true;
-           _anim.SetBool("IsJumping", false);
+           //_anim.SetBool("IsJumping", false);
         }
     
     }
@@ -27,7 +27,7 @@ public class GroundSensor : MonoBehaviour
         if(other.gameObject.layer == 3)
         {
            isGrounded = true; 
-           _anim.SetBool("IsJumping", false);
+          // _anim.SetBool("IsJumping", false);
         }
     }
 
@@ -36,7 +36,7 @@ public class GroundSensor : MonoBehaviour
         if(other.gameObject.layer == 3)
         {
            isGrounded = false; 
-           _anim.SetBool("IsJumping", true);
+          // _anim.SetBool("IsJumping", true);
         }
     }
 }
