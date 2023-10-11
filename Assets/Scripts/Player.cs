@@ -1,6 +1,7 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Player : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class Player : MonoBehaviour
     private float _playerInput;
     private float _jumpInput;
     //private GroundSensor _gs;
-    private Animator _anim;
+    [SerializeField]private Animator _anim;
+    [SerializeField]private PlayableDirector _director;
 
     //private float _playerInputUpDown;  
     void Start()
@@ -21,7 +23,8 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         //_gs = GameObject.Find("GroundSensor").GetComponent<GroundSensor>();
         //_gs = GetComponentInChildren<GroundSensor>();
-        _anim = GetComponentInChildren<Animator>();
+       // _anim = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -29,14 +32,20 @@ public class Player : MonoBehaviour
     {
         PlayerJump();
 
+        if (Input.GetButtonDown("Fire2"))
+        {
+            _director.Play();
+        }
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate() 
+    {
         PlayerMovement();
 
     }
 
-    void PlayerMovement(){
+    void PlayerMovement()
+    {
         _playerInput = Input.GetAxis("Horizontal");
         /*_playerInputUpDown = Input.GetAxis("Vertical");  
         transform.Translate(new Vector2(_playerInput,_playerInputUpDown) * _playerSpeed * Time.deltaTime);*/
@@ -58,13 +67,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlayerJump(){
+    void PlayerJump()
+    {
        if(Input.GetButtonDown("Jump") && GroundSensor.isGrounded)
        {
         _rb.AddForce(Vector2.up *_jumpForce, ForceMode2D.Impulse);
         }
 
-        if (GroundSensor.isGrounded)
+        if(GroundSensor.isGrounded)
         {
             _anim.SetBool("IsJumping", false);
         } else
