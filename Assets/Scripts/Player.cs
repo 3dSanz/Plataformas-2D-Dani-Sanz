@@ -30,7 +30,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerJump();
+        if (Input.GetButtonDown("Jump") && GroundSensor.isGrounded)
+        {
+            PlayerJump();
+        }
+        _anim.SetBool("IsJumping", !GroundSensor.isGrounded);
 
         if (Input.GetButtonDown("Fire2"))
         {
@@ -56,12 +60,12 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
             _anim.SetBool("IsRunning", true);
         }
-        if(_playerInput < 0)
+        else if(_playerInput < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             _anim.SetBool("IsRunning", true);
         }
-        if(_playerInput == 0)
+        else
         {
             _anim.SetBool("IsRunning", false);
         }
@@ -69,17 +73,13 @@ public class Player : MonoBehaviour
 
     void PlayerJump()
     {
-       if(Input.GetButtonDown("Jump") && GroundSensor.isGrounded)
-       {
         _rb.AddForce(Vector2.up *_jumpForce, ForceMode2D.Impulse);
-        }
 
-        if(GroundSensor.isGrounded)
-        {
-            _anim.SetBool("IsJumping", false);
-        } else
-        {
-            _anim.SetBool("IsJumping", true);
-        }
     }
+
+    public void SignalTest()
+    {
+        Debug.Log("Señal recibida");
+    }
+    
 }

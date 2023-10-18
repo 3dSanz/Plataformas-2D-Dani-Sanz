@@ -7,10 +7,10 @@ public class GroundSensor : MonoBehaviour
     public static bool isGrounded;
     private Animator _anim;
 
-    void Start()
+  /*  void Awake()
     {
         _anim = GameObject.Find("rogue").GetComponent<Animator>();
-    }
+    }*/
 
     void OnTriggerEnter2D(Collider2D other)
     {
