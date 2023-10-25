@@ -23,8 +23,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlaySound(AudioClip clip)
+    {
+        _audio.PlayOneShot(clip);
+    }
 
-    public void JumpSound() 
+   /* public void JumpSound() 
     {
          _audio.PlayOneShot(playerJump);
     }
@@ -32,5 +36,7 @@ public class SoundManager : MonoBehaviour
     public void DeathSound()
     {
         _audio.PlayOneShot(deathSound);
-    }
+    }*/
+
+
 }

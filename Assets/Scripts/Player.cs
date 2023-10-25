@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     void PlayerJump()
     {
         _rb.AddForce(Vector2.up *_jumpForce, ForceMode2D.Impulse);
-        SoundManager.instance.JumpSound();
+        SoundManager.instance.PlaySound(SoundManager.instance.playerJump);
     }
 
     public void SignalTest()
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         if(collider.gameObject.layer == 6)
         {
            GameManager.instance.GameOver();
-           SoundManager.instance.DeathSound();
+           SoundManager.instance.PlaySound(SoundManager.instance.deathSound);
         }
         
     }
