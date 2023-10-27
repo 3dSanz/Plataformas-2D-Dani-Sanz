@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance {get; private set;}
     public int vidas;
+    public bool _isGameOver = false;
+    public GameObject _gameOver;
 
     void Awake()
     {
@@ -16,17 +18,13 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _isGameOver = true;
+        _gameOver.SetActive(true);
     }
 }
