@@ -16,15 +16,15 @@ public class Player : MonoBehaviour
     //private GroundSensor _gs;
     [SerializeField]private Animator _anim;
     [SerializeField]private PlayableDirector _director;
-
+    public int _stars = 0;
     //private float _playerInputUpDown;  
-    void Start()
+    void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         //_gs = GameObject.Find("GroundSensor").GetComponent<GroundSensor>();
         //_gs = GetComponentInChildren<GroundSensor>();
        // _anim = GetComponentInChildren<Animator>();
-       Debug.Log(GameManager.instance.vidas);
+       //Debug.Log(GameManager.instance.vidas);
         
     }
 
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         {
             _director.Play();
         }
+
     }
 
     private void FixedUpdate() 
@@ -93,4 +94,13 @@ public class Player : MonoBehaviour
         }
         
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Star")
+        {
+            _stars++;
+        }
+    }
+
 }
