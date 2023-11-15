@@ -18,12 +18,6 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    
-    void Update()
-    {
-
-    }
-
     IEnumerator Spawn() //Las corrutinas al contrario que las funciones se pueden parar
     {
         for (int i = 0; i < _numberOfObjectsToSpawn; i++)

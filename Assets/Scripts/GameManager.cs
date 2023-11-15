@@ -5,14 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance {get; private set;}
-    public int vidas;
     public bool _isGameOver = false;
     public GameObject _gameOver;
+    public bool _isVictory = false;
+    public GameObject _victory;
+    [SerializeField] float _victoryRate = 10;
     public GameObject _star1;
     public GameObject _star2;
     public GameObject _star3;
     public GameObject _star4;
     public GameObject _star5;
+    public GameObject _hp1;
+    public GameObject _hp2;
+    public GameObject _hp3;
     Player _player;
 
     void Awake()
@@ -31,6 +36,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         StarCount();
+        TakeDamage();
+        if(_player._stars == 5)
+        {
+            StartCoroutine(Victory());
+        }
     }
 
     public void GameOver()
@@ -38,6 +48,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         _isGameOver = true;
         _gameOver.SetActive(true);
+    }
+
+    IEnumerator Victory()
+    {
+        Debug.Log("Victory");
+        _isVictory = true;
+        _victory.SetActive(true);
+        yield return new WaitForSeconds(_victoryRate);
     }
 
     void StarCount()
@@ -66,5 +84,25 @@ public class GameManager : MonoBehaviour
         {
             _star5.SetActive(true);
         }
+    }
+
+    void TakeDamage()
+    {
+        _player._hp = _player._hp--;
+        if(_player._hp==2)
+        {
+            _hp1.SetActive(false);
+        }
+
+        if(_player._hp==1)
+        {
+            _hp2.SetActive(false);
+        }
+
+        if(_player._hp==0)
+        {
+            GameOver();
+        }
+
     }
 }

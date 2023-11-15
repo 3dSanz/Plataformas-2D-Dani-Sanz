@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField]private Animator _anim;
     [SerializeField]private PlayableDirector _director;
     public int _stars = 0;
+    public int _hp = 3;
     //private float _playerInputUpDown;  
     void Awake()
     {
