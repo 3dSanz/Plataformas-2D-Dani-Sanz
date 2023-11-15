@@ -19,10 +19,13 @@ public class GameManager : MonoBehaviour
     public GameObject _hp2;
     public GameObject _hp3;
     Player _player;
+    SoundManager _sound;
 
     void Awake()
     {
         _player = GameObject.Find("Personaje").GetComponent<Player>();
+        _sound = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        
         if(instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -30,7 +33,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
     }
 
     void Update()
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         _isGameOver = true;
         _gameOver.SetActive(true);
+        _sound.StopBGM();
     }
 
     IEnumerator Victory()

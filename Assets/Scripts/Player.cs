@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
     void PlayerJump()
     {
         _rb.AddForce(Vector2.up *_jumpForce, ForceMode2D.Impulse);
-        SoundManager.instance.PlaySound(SoundManager.instance.playerJump);
+        SFXManager.instance.PlaySound(SFXManager.instance.playerJump);
     }
 
     public void SignalTest()
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         if(collider.gameObject.layer == 6)
         {
            GameManager.instance.GameOver();
-           SoundManager.instance.PlaySound(SoundManager.instance.deathSound);
+           SFXManager.instance.PlaySound(SFXManager.instance.deathSound);
         }
         
     }
@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Star")
         {
             _stars++;
+            SFXManager.instance.PlaySound(SFXManager.instance.pickupCoin);
         }
     }
 
