@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject _gameOver;
     public bool _isVictory = false;
     public GameObject _victory;
-    [SerializeField] float _victoryRate = 10;
+    [SerializeField] int _victoryRate = 10;
     public GameObject _star1;
     public GameObject _star2;
     public GameObject _star3;
@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Victory");
         _isVictory = true;
         _victory.SetActive(true);
+        SFXManager.instance.PlaySound(SFXManager.instance.success);
         yield return new WaitForSeconds(_victoryRate);
     }
 

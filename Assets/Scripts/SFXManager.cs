@@ -12,6 +12,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip select;
     public AudioClip explosion;
     public AudioClip hitHurt;
+    public AudioClip success;
     // Start is called before the first frame update
 
     void Awake()
