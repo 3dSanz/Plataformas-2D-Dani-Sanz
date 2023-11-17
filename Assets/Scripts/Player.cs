@@ -47,7 +47,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        PlayerMovement();
+        if(GameManager.instance._isVictory == false)
+        {
+            PlayerMovement();
+        }
+
 
     }
 
@@ -98,7 +102,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Star")
+        if (other.gameObject.tag == "Star" && other.gameObject.layer == 8)
         {
             _stars++;
             SFXManager.instance.PlaySound(SFXManager.instance.pickupCoin);
