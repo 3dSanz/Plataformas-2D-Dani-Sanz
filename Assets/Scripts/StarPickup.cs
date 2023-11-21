@@ -14,7 +14,7 @@ public class StarPickup : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && other.gameObject.layer == 0)
+        if (other.gameObject.tag == "Player" && other.gameObject.layer == 9)
         {
             Destroy(this.gameObject);
         }

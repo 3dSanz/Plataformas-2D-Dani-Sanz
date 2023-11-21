@@ -109,4 +109,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void PlayerDamage()
+    {
+        _hp--;
+    }
+
 }

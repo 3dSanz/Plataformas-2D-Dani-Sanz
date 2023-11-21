@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         _isVictory = true;
         _victory.SetActive(true);
         SFXManager.instance.PlaySound(SFXManager.instance.success);
-        yield return new WaitForSecondsW(_victoryRate);
+        yield return new WaitForSeconds(_victoryRate);
     }
 
     void StarCount()
@@ -90,9 +90,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void TakeDamage()
+    public void TakeDamage()
     {
-        _player._hp = _player._hp--;
         if(_player._hp==2)
         {
             _hp1.SetActive(false);
