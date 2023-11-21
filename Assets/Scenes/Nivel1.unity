@@ -8827,7 +8827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGameOver: 0
-  _gameOver: {fileID: 915511691}
+  _gameOver: {fileID: 3792303306396054565}
   _isVictory: 0
   _victory: {fileID: 117853351}
   _victoryRate: 10
@@ -9390,11 +9390,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &915511691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7871096252951394051, guid: 95a494cb8fa7e884c9d6af67c85dd07c, type: 3}
-  m_PrefabInstance: {fileID: 6456815604196557606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &937894971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10461,7 +10456,7 @@ Transform:
   m_GameObject: {fileID: 1136260494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.84, y: 0.71, z: -1.4129171}
+  m_LocalPosition: {x: -9.19, y: -0.09, z: -1.4129171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13147,6 +13142,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5680ff2122175047b7860b4d05fc15c, type: 3}
+--- !u!1 &3792303306396054565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7871096252951394051, guid: 95a494cb8fa7e884c9d6af67c85dd07c, type: 3}
+  m_PrefabInstance: {fileID: 6456815604196557606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4675252495570858199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7790722248759718933, guid: 71dcfa956ad456d40b8e5b9d5aab1cc6, type: 3}

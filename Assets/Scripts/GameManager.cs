@@ -47,10 +47,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
-        _isGameOver = true;
-        _gameOver.SetActive(true);
-        _sound.StopBGM();
+        if (_isVictory != true)
+        {
+            Debug.Log("Game Over");
+            _isGameOver = true;
+            _gameOver.SetActive(true);
+            _sound.StopBGM();
+        }
+
     }
 
     IEnumerator Victory()
