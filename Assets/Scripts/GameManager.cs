@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject _gameOver;
     public bool _isVictory = false;
     public GameObject _victory;
-    [SerializeField] int _victoryRate = 10;
+    //[SerializeField] float _victoryRate = 0.2f;
     public GameObject _star1;
     public GameObject _star2;
     public GameObject _star3;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         TakeDamage();
         if(_player._stars == 5)
         {
-            StartCoroutine(Victory());
+            Victory();
         }
     }
 
@@ -51,19 +52,19 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             _isGameOver = true;
-            _gameOver.SetActive(true);
+            SceneManager.LoadScene(2);
             _sound.StopBGM();
         }
 
     }
 
-    IEnumerator Victory()
+    public void Victory()
     {
         Debug.Log("Victory");
         _isVictory = true;
-        _victory.SetActive(true);
-        SFXManager.instance.PlaySound(SFXManager.instance.success);
-        yield return new WaitForSeconds(_victoryRate);
+        //yield return new WaitForSeconds(_victoryRate);
+        _sound.StopBGM();
+        SceneManager.LoadScene(3);
     }
 
     void StarCount()

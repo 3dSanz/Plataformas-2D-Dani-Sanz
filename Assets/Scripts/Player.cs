@@ -19,9 +19,12 @@ public class Player : MonoBehaviour
     public int _stars = 0;
     public int _hp = 3;
     //private float _playerInputUpDown;  
+
+    //FixedJoystick _joyStick;
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+      //_joyStick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
         //_gs = GameObject.Find("GroundSensor").GetComponent<GroundSensor>();
         //_gs = GetComponentInChildren<GroundSensor>();
        // _anim = GetComponentInChildren<Animator>();
@@ -58,6 +61,8 @@ public class Player : MonoBehaviour
     void PlayerMovement()
     {
         _playerInput = Input.GetAxis("Horizontal");
+
+
         /*_playerInputUpDown = Input.GetAxis("Vertical");  
         transform.Translate(new Vector2(_playerInput,_playerInputUpDown) * _playerSpeed * Time.deltaTime);*/
          _rb.velocity = new Vector2 (_playerInput*_playerSpeed, _rb.velocity.y);
